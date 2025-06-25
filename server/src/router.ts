@@ -20,9 +20,10 @@ export type Context = Awaited<ReturnType<typeof createContext>>;
 // Initialize tRPC
 const t = initTRPC.context<Context>().create();
 
+const router = t.router;
 const publicProcedure = t.procedure;
 
-const appRouter = t.router({
+const appRouter = router({
   getAll: publicProcedure.query(() => {
     const allPosts = db
       .select()
